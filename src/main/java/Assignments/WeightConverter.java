@@ -14,7 +14,7 @@ public class WeightConverter {
     public static void main(String[] args) {
 
         try {
-            System.out.println(poundsToKilos(5.5));
+            System.out.println(poundsToKilos(8.2));
         }
         catch (AssertionError error) {
             System.out.println(error);
@@ -35,7 +35,7 @@ public class WeightConverter {
         }
 
         try {
-            System.out.println(kilosToPounds(-1.8));
+            System.out.println(kilosToPounds(-3.1));
         }
         catch (AssertionError error) {
             System.err.println(error);

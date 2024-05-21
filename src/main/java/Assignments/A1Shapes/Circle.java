@@ -3,7 +3,10 @@ package Assignments.A1Shapes;
 public class Circle extends Shape{
     private Double radius;
 
-    public Circle(Double radius){
+    public Circle(Double radius) throws InvalidShapeParameterException {
+        if (radius <= 0) {
+            throw new InvalidShapeParameterException();
+        }
         this.radius = radius;
     }
 

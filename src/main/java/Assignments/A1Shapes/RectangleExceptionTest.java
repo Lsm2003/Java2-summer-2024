@@ -1,6 +1,6 @@
 package Assignments.A1Shapes;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -9,16 +9,16 @@ class RectangleExceptionTest {
 
     @Test
     void createRectangles () throws InvalidShapeParameterException {
-        Rectangle goodRectangle = new Rectangle(1.0,1.0);
-        assertNotNull(goodRectangle);
+        Rectangle rectangle = new Rectangle(3.4,1.2);
+        assertNotNull(rectangle);
 
 
         assertThrows(InvalidShapeParameterException.class, () -> {
-            Rectangle badWidthRectangle = new Rectangle(1.0, -1.0);
+            Rectangle invalidWidthRectangle = new Rectangle(5.6, -2.8);
         });
 
         assertThrows(InvalidShapeParameterException.class, ()-> {
-            Rectangle badLengthRectangle = new Rectangle(-1.0,1.0);
+            Rectangle invalidLengthRectangle = new Rectangle(-3.3,1.2);
         });
     }
 
