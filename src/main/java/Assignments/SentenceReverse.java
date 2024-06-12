@@ -1,18 +1,20 @@
 package Assignments;
 
+import java.util.Scanner;
 public class SentenceReverse {
-    public static String sentence = "You will never find a more wretched hive of scum and villainy - Obi Wan";
-
     public static void main(String[] args) {
-        System.out.println(reverseScentence(sentence));
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please type a sentence to reverse:");
+        String sentence = scanner.nextLine();
+        System.out.println(reverseSentence(sentence));
     }
 
-    public static String reverseScentence(String scentence) {
-        String[] words = scentence.split("\\s");
-        StringBuilder reversedScentence = new StringBuilder();
-        for (int i = words.length-1 ; i >= 0; i--) {
-            reversedScentence.append(words[i]).append(" ");
+    public static String reverseSentence(String sentence) {
+        String[] words = sentence.split("\\s");
+        StringBuilder reversedSentence = new StringBuilder();
+        for (int i = words.length - 1 ; i >= 0; i--) {
+            reversedSentence.append(words[i]).append(" ");
         }
-        return String.valueOf(reversedScentence);
+        return String.valueOf(reversedSentence).trim();
     }
 }

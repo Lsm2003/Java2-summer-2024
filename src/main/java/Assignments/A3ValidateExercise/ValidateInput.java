@@ -15,7 +15,6 @@ public class ValidateInput {
 
     // validate address
     public static boolean validateAddress(String address) {
-        // return address.matches("\\d+\\s+([a-zA-Z]+|[a-zA-Z]+\\s[a-zA-Z]+)");
         return address.matches("\\d+\\s+([a-zA-Z]+|[a-zA-Z]+\\s[a-zA-Z]+|[a-zA-Z]+\\s[a-zA-Z]+\\s[a-zA-Z]+)");
     }
 
@@ -26,19 +25,16 @@ public class ValidateInput {
 
     // validate state
     public static boolean validateState(String state) {
-        // return state.matches("([a-zA-Z]+|[a-zA-Z]+\\s[a-zA-Z]+)") ;
         return state.matches("([a-zA-Z]+|[a-zA-Z]+\\s[a-zA-Z]+|[a-zA-Z]+\\s[a-zA-Z]+\\s[a-zA-Z]+)") ;
     }
 
     // validate zip
     public static boolean validateZip(String zip) {
-        // return zip.matches("\\d{5}");
         return zip.matches("\\d{5} | ([A-Z]\\d){3}");
     }
 
     // validate phone
     public static boolean validatePhone(String phone) {
-        // return phone.matches("[1-9]\\d{2}-[1-9]\\d{2}-\\d{4}");
         return phone.matches("\\d{2}-[1-9]\\d{2}-[1-9]\\d{2}-\\d{4}");
     }
 }
