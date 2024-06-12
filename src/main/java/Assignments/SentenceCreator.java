@@ -5,21 +5,21 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 public class SentenceCreator {
-    private static final Map<String, String[]> WORD_CATEGORIES = new HashMap<>();
+    private static final Map<String, String[]> CATEGORIES = new HashMap<>();
 
     static {
-        WORD_CATEGORIES.put("article", new String[]{"the", "a", "one", "some", "any"});
-        WORD_CATEGORIES.put("noun", new String[]{"boy", "girl", "dog", "town", "car", "Truck"});
-        WORD_CATEGORIES.put("verb", new String[]{"drove", "jumped", "ran", "walked", "skipped"});
-        WORD_CATEGORIES.put("preposition", new String[]{"to", "from", "over", "under", "on"});
+        CATEGORIES.put("article", new String[]{"the", "a", "one", "some", "any"});
+        CATEGORIES.put("noun", new String[]{"boy", "girl", "dog", "town", "car", "Truck"});
+        CATEGORIES.put("verb", new String[]{"drove", "jumped", "ran", "walked", "skipped"});
+        CATEGORIES.put("preposition", new String[]{"to", "from", "over", "under", "on"});
     }
 
-    private static String[] sequence = {"article","noun","verb","preposition","article","noun"};
+    private static String[] sentenceSequence = {"article","noun","verb","preposition","article","noun"};
 
     public static void main(String[] args) {
         Random random = new Random();
         for (int i = 0; i < 20; i++) {
-            System.out.println(generateScentence(random, WORD_CATEGORIES, sequence));
+            System.out.println(generateScentence(random, CATEGORIES, sentenceSequence));
         }
     }
 
