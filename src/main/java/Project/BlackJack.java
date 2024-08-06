@@ -2,17 +2,16 @@ package Project;
 
 import java.util.ArrayList;
 
-
 public class BlackJack {
     public Boolean gameState;
     public Hand dealerHand;
-    public Hand playerhand;
+    public Hand playerHand;
     public Integer bet;
 
     public BlackJack(ArrayList<PlayingCard> playerCards , ArrayList<PlayingCard> dealerCards, Integer bet) {
         this.gameState = true;
         this.dealerHand = new Hand(dealerCards);
-        this.playerhand = new Hand(playerCards);
+        this.playerHand = new Hand(playerCards);
         this.bet = bet;
     }
 
@@ -24,13 +23,9 @@ public class BlackJack {
     }
 
     public Hand checkWinner() {
-        if (this.playerhand.getScore() > this.dealerHand.getScore() && this.playerhand.getScore() < 22 || this.dealerHand.getScore() > 21) {
-            return this.playerhand;
+        if (this.playerHand.getScore() > this.dealerHand.getScore() && this.playerHand.getScore() < 22 || this.dealerHand.getScore() > 21) {
+            return this.playerHand;
         }
         else return this.dealerHand;
     }
-
-    public void stay(){
-    }
-    public void doubleDown(){}
 }
