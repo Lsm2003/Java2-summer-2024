@@ -18,8 +18,8 @@ import Project.PlayingCard;
 import Project.Shoe;
 
 /**
- * Represents a Dealer for a networked game of Blackjack.
- * contains all the necessary objects and methods to run a networked game of Blackjack.
+ * Represents a Dealer for a game of Blackjack.
+ * contains all the necessary objects and methods to run a game of Blackjack.
  */
 public class Dealer implements Runnable {
     private Socket clientSocket;
@@ -27,6 +27,10 @@ public class Dealer implements Runnable {
     private gamestates action;
     private BlackJack game;
 
+    /**
+     * Creates an instanced object of type Dealer
+     * @param socket the client socket in which this dealer will communicate and listen for commands
+     */
     public Dealer(Socket socket) {
         this.clientSocket = socket;
         this.shoe = new Shoe(6);
@@ -55,7 +59,15 @@ public class Dealer implements Runnable {
 
     }
 
-
+    /**
+     * Handles the command as given by the Client over this Dealers Socket
+     * Builds up a JSONObject to send over the Output object for the Client to recieve
+     * @param command The command which the Client has sent for this Dealer
+     * @param parser A JSON Parser which will be used to grab JSON objects as sent by the Client
+     * @param outputObject The JSON object which the method will add to be sent to the client
+     * @throws ParseException
+     * @throws InterruptedException
+     */
     @SuppressWarnings("unchecked")
     private void handleRequest(String command, JSONParser parser, JSONObject outputObject) throws ParseException, InterruptedException {
         JSONObject commandAsJsonObject = (JSONObject) parser.parse(command);
@@ -100,6 +112,9 @@ public class Dealer implements Runnable {
         outputObject.put("options", CommandList(this.action));
     }
 
+    /**
+     * GameStates for this Dealer to decide which commands this Dealer should take
+     */
     public enum gamestates {
         START,
         INPLAY,
@@ -107,6 +122,11 @@ public class Dealer implements Runnable {
         END
     }
 
+    /**
+     * Checks whether the dealer will hit their hand
+     * @param hand this Dealer's hand as part of the Blackjack game
+     * @return Whether this Dealer will hit their current hand based on score
+     */
     public boolean willHit(Hand hand) {
         return hand.getScore() < 17;
     }
@@ -124,6 +144,10 @@ public class Dealer implements Runnable {
         return options;
     }
 
+    /**
+     * Deals a card from the Dealer's Shoe
+     * @return a PlayingCard from the Dealer's Shoe
+     */
     public PlayingCard deal() {
         return shoe.drawCard();
     }

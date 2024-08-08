@@ -13,13 +13,24 @@ import org.json.simple.parser.ParseException;
 
 import Project.Client.GUI.GUI;
 
+/**
+ * Represents a Player in a game of Blackjack
+ */
 class Client {
     private int chips;
 
+    /**
+     * Creates an instance of Client
+     */
     public Client () {
         this.chips = 200;
     }
 
+    /**
+     * Main method for this Client
+     * Contains While loop to play the Blackjack game
+     * @param args
+     */
     @SuppressWarnings("unchecked")
     public static void main(String[] args)
     {
@@ -87,6 +98,12 @@ class Client {
         }
     }
 
+    /**
+     * Checks whether the command given exists within the options given provided
+     * @param options The objects provided by the Dealer
+     * @param command The command issued by the user
+     * @return True if the command exists within the provided options, otherwise false
+     */
     private static Boolean checkCommand(JSONArray options, String command) {
         boolean found = false;
         for (Object option : options) {
@@ -98,13 +115,28 @@ class Client {
         return found;
     }
 
+    /**
+     * gets the value of the options key
+     * @param inboundObject the JSONObject which was sent this Client
+     * @return an Array of options.
+     * @throws IOException
+     * @throws ParseException
+     */
     private static JSONArray getOptions(JSONObject inboundObject) throws IOException, ParseException {
         return (JSONArray) inboundObject.get("options");
     }
 
+    /**
+     * Handles the JSONObject sent to this Client
+     * @param inboundObject The JSONObject sent to this Client
+     * @param client this Client for the purpose of changing the chip value
+     * @throws IOException
+     * @throws ParseException
+     */
     private static void handleObject(JSONObject inboundObject, Client client) throws IOException, ParseException {
         if (inboundObject.containsKey("status")) {
             if (inboundObject.get("status").equals("bust")) {
+                GUI.printCards((String) inboundObject.get("cards"));
                 System.out.println("you bust :(");
             }
 

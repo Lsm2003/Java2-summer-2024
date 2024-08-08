@@ -2,18 +2,34 @@ package Project;
 
 import java.util.ArrayList;
 
+/**
+ * Represents a Hand in a game of Blackjack
+ * Contains methods for calculating score and printing the hands cards
+ */
 public class Hand {
     public ArrayList<PlayingCard> cards;
 
+    /**
+     * Creates an instance of Hand
+     * @param cards an ArrayList containing the first 2 cards dealt
+     */
     public Hand(ArrayList<PlayingCard> cards) {
         this.cards = cards;
 
     }
 
+    /**
+     * Adds a PlayingCard to Hand
+     * @param card the card being dealt
+     */
     public void addCard(PlayingCard card){
         this.cards.add(card);
     }
 
+    /**
+     * Gets the score of this Hand
+     * @return The current score of this Hand
+     */
     public int getScore() {
         int score = 0;
         int aceCount = 0;

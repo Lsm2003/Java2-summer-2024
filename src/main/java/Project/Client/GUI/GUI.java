@@ -2,13 +2,26 @@ package Project.Client.GUI;
 
 import java.io.IOException;
 
+/**
+ * A class for handling a Blackjack game
+ */
 public class GUI {
 
+    /**
+     * Seperates a stringifies array of cards on the comma ',' character
+     * Must be in the format "10v,9o,k$".
+     * @param cards The Stringified array of cards delimmited by the comma ','
+     * @return A String array of all the cards passed into this method
+     */
     private static String[] getcards(String cards) {
         String[] result = cards.split(",");
         return result;
     }
 
+    /**
+     * Prints ascii art representation of the cards
+     * @param cards The stringified array of cards.
+     */
     public static void printCards(String cards) {
         String[] cardsList = getcards(cards);
         String[] cardLines = new String[7];
@@ -65,12 +78,19 @@ public class GUI {
         }
     }
 
+    /**
+     * Prints a header to display the number of chips available
+     * @param chips
+     */
     public static void printChips(int chips) {
         System.out.println("**********************");
         System.out.println("chips available: " + chips);
         System.out.println("**********************");
     }
 
+    /**
+     * Prints the chars to clear the text from the console
+     */
     public static void clearConsole() {
         try {
             if (System.getProperty("os.name").contains("Windows")) {
